@@ -4,13 +4,15 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+const birdImage = new Image();
+birdImage.src = "https://cdn3.emoji.gg/emojis/3244-trollface.png";
+
 const bird = {
   x: 100,
   y: canvas.height / 2,
   width: 40,
   height: 40,
   velocity: 0,
-  color: "#ffcc00",
   smoke: [],
 };
 
@@ -34,11 +36,10 @@ const topRightText = document.getElementById("topRightText");
 const startBtn = document.getElementById("startBtn");
 const startScreen = document.getElementById("startScreen");
 
-// Event listeners
 canvas.addEventListener("click", () => {
   if (!gameStarted) {
     gameStarted = true;
-    startScreen.style.display = "none";  // hide the start screen
+    startScreen.style.display = "none";
     resetGame();
     loop();
   } else if (!gameOver) {
@@ -48,12 +49,11 @@ canvas.addEventListener("click", () => {
 
 restartBtn.addEventListener("click", () => {
   resetGame();
-  gameOverContainer.style.display = "none"; // Hide the Game Over screen
+  gameOverContainer.style.display = "none";
   gameStarted = true;
   loop();
 });
 
-// Start the game when the "Start Game" button is clicked
 startBtn.addEventListener("click", () => {
   gameStarted = true;
   startScreen.style.display = "none";
@@ -72,8 +72,7 @@ function resetGame() {
 }
 
 function drawBird() {
-  ctx.font = "40px Arial";
-  ctx.fillText("🐥", bird.x, bird.y);
+  ctx.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
 }
 
 function drawSmoke() {
@@ -84,7 +83,7 @@ function drawSmoke() {
     ctx.beginPath();
     ctx.arc(smoke.x, smoke.y, 5, 0, Math.PI * 2);
     ctx.fill();
-    smoke.x -= 2; // Move smoke in the opposite direction (left)
+    smoke.x -= 2;
     smoke.alpha -= 0.05;
     if (smoke.alpha <= 0) bird.smoke.splice(index, 1);
   });
@@ -115,9 +114,9 @@ function checkCollision() {
 
   for (let pipe of pipes) {
     if (
-      bird.x - bird.width / 2 < pipe.x + pipeWidth &&
-      bird.x + bird.width / 2 > pipe.x &&
-      (bird.y - bird.height / 2 < pipe.top || bird.y + bird.height / 2 > pipe.top + pipeGap)
+      bird.x < pipe.x + pipeWidth &&
+      bird.x + bird.width > pipe.x &&
+      (bird.y < pipe.top || bird.y + bird.height > pipe.top + pipeGap)
     ) {
       return true;
     }
@@ -145,7 +144,7 @@ function updateScore() {
 
 function loop() {
   if (gameOver) {
-    gameOverContainer.style.display = "block"; // Show the Game Over screen
+    gameOverContainer.style.display = "block";
     return;
   }
 
@@ -160,7 +159,7 @@ function loop() {
   bird.y += bird.velocity;
 
   if (checkCollision()) {
-    gameOver = true; // Set game over to true when collision happens
+    gameOver = true;
   }
 
   frames++;
