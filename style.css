@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #80c4ff, #ffffff);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#gameContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Start Screen */
+#startScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+#startScreenContent {
+  text-align: center;
+  color: white;
+}
+
+#flappyText {
+  font-size: 50px;
+  color: #ffcc00;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#birdEmoji {
+  font-size: 100px;
+  margin: 20px;
+}
+
+#startBtn {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#startBtn:hover {
+  background-color: #ff4500;
+}
+
+/* Game Over Screen */
+#gameOverContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: none;
+}
+
+#gameOverText {
+  font-size: 50px;
+  color: #ff3333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#restartBtn {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#restartBtn:hover {
+  background-color: #ff4500;
+}
+
+/* Score and Highscore */
+#scoreContainer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+
+#highScore {
+  margin-left: 20px;
+}
+
+/* Static Text in Top Right Corner */
+#topRightText {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #000;
+  font-family: 'Arial', sans-serif;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #87ceeb;
+  display: block;
+}
