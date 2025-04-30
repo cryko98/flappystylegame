@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flappy Bird Emoji</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="gameContainer">
+    <!-- Start Screen -->
+    <div id="startScreen">
+      <div id="startScreenContent">
+        <h1 id="flappyText">Flappy Bird</h1>
+        <div id="birdEmoji">🐥</div>
+        <button id="startBtn">Start Game</button>
+      </div>
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverContainer">
+      <h1 id="gameOverText">Game Over</h1>
+      <button id="restartBtn">Restart</button>
+    </div>
+
+    <!-- Score and Highscore -->
+    <div id="scoreContainer">
+      <span id="score">Score: 0</span>
+      <span id="highScore">Highscore: 0</span>
+    </div>
+
+    <!-- Static Text in Top Right Corner -->
+    <div id="topRightText">ca: xxxxxxxxxxxxxxxxxxxxxxx</div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
